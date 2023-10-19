@@ -11,12 +11,12 @@ interface IERC20 {
 
 contract bridgeOne {
     address public wallet;
-    IERC20 public token1;
+    IERC20 public tokenone;
 
      // Executed on deployment
     constructor(address _wallet, address _token) {
         wallet = _wallet;
-        token1 = IERC20(_token);
+        tokenone = IERC20(_token);
     }
 
     event SendTokens(address indexed to, uint256 amount);
@@ -27,11 +27,11 @@ contract bridgeOne {
     }
 
     function sendTokens(address _to, uint256 _amount) external onlyWallet {
-        require(token1.balanceOf(address(this)) >= _amount, "Balance of the smart contract is too low!");
+        require(tokenone.balanceOf(address(this)) >= _amount, "Balance of the smart contract is too low!");
 
-        token1.approve(_to, _amount); // Approve the receiver to use tokens
+        tokenone.approve(_to, _amount); // Approve the receiver to use tokens
 
-        token1.transferFrom(address(this), _to, _amount); // Send the tokens
+        tokenone.transferFrom(address(this), _to, _amount); // Send the tokens
 
         emit SendTokens(_to, _amount);
     }

@@ -16,7 +16,7 @@ contract("BridgeTwo", (accounts) => {
     const walletAddress = await bridgeTwo.wallet();
     assert.equal(walletAddress, wallet, "Wallet address is not set correctly");
 
-    const tokenTwoAddress = await bridgeTwo.token2();
+    const tokenTwoAddress = await bridgeTwo.tokenTwo();
     assert.equal(
       tokenTwoAddress,
       owner,

@@ -82,7 +82,7 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "//SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.17;\r\n\r\n// Interfaces\r\ninterface IERC20 {\r\n    function balanceOf(address account) external view returns (uint256);\r\n    function approve(address spender, uint256 amount) external returns (bool);\r\n    function transferFrom(address from, address to, uint256 amount) external returns (bool);\r\n}\r\n\r\ncontract bridgeTwo {\r\n    address public wallet;\r\n    IERC20 public token2;\r\n\r\n    constructor(address _wallet, address _token) {\r\n        wallet = _wallet;\r\n        token2 = IERC20(_token);\r\n    }\r\n\r\n    event SendTokens(address indexed to, uint256 amount);\r\n\r\n    modifier onlyWallet() {\r\n        require(msg.sender == wallet);\r\n        _;\r\n    }\r\n\r\n    function sendTokens(address _to, uint256 _amount) external onlyWallet {\r\n        require(token2.balanceOf(address(this)) >= _amount, \"Balance of the smart contract is too low!\");\r\n\r\n        token2.approve(_to, _amount); // Approve the receiver to use tokens\r\n\r\n        token2.transferFrom(address(this), _to, _amount); // Send the tokens\r\n\r\n        emit SendTokens(_to, _amount);\r\n    }\r\n}",
+  "source": "//SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.17;\r\n\r\n// Interfaces\r\ninterface IERC20 {\r\n    function balanceOf(address account) external view returns (uint256);\r\n    function approve(address spender, uint256 amount) external returns (bool);\r\n    function transferFrom(address from, address to, uint256 amount) external returns (bool);\r\n}\r\n\r\ncontract bridgeTwo {\r\n    address public wallet;\r\n    IERC20 public tokenTwo;\r\n\r\n    constructor(address _wallet, address _token) {\r\n        wallet = _wallet;\r\n        tokenTwo = IERC20(_token);\r\n    }\r\n\r\n    event SendTokens(address indexed to, uint256 amount);\r\n\r\n    modifier onlyWallet() {\r\n        require(msg.sender == wallet);\r\n        _;\r\n    }\r\n\r\n    function sendTokens(address _to, uint256 _amount) external onlyWallet {\r\n        require(tokenTwo.balanceOf(address(this)) >= _amount, \"Balance of the smart contract is too low!\");\r\n\r\n        tokenTwo.approve(_to, _amount); // Approve the receiver to use tokens\r\n\r\n        tokenTwo.transferFrom(address(this), _to, _amount); // Send the tokens\r\n\r\n        emit SendTokens(_to, _amount);\r\n    }\r\n}",
   "sourcePath": "E:\\BCDV4028-Assingnment1\\contracts\\bridgeContract_2.sol",
   "ast": {
     "absolutePath": "project:/contracts/bridgeContract_2.sol",
@@ -513,7 +513,7 @@
             "functionSelector": "25be124e",
             "id": 929,
             "mutability": "mutable",
-            "name": "token2",
+            "name": "tokenTwo",
             "nameLocation": "418:6:6",
             "nodeType": "VariableDeclaration",
             "scope": 1011,
@@ -604,7 +604,7 @@
                     "lValueRequested": false,
                     "leftHandSide": {
                       "id": 940,
-                      "name": "token2",
+                      "name": "tokenTwo",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 929,
@@ -1049,7 +1049,7 @@
                             ],
                             "expression": {
                               "id": 974,
-                              "name": "token2",
+                              "name": "tokenTwo",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 929,
@@ -1213,7 +1213,7 @@
                       ],
                       "expression": {
                         "id": 986,
-                        "name": "token2",
+                        "name": "tokenTwo",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 929,
@@ -1360,7 +1360,7 @@
                       ],
                       "expression": {
                         "id": 993,
-                        "name": "token2",
+                        "name": "tokenTwo",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 929,
